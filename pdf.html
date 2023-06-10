@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        .condiv {
+            border: 2px solid;
+            width: 380px;
+            height: 444px;
+            margin: auto;
+            margin-top: 40px !important;
+        }
+
+        .payment {
+            border: 2px solid;
+            width: 35px;
+            margin-top: 10px !important;
+            margin: auto;
+            height: 35px;
+            border-radius: 50px;
+        }
+        
+    </style>
+
+<!-- <button class="btn btn-success" onclick="printpdf2()">PDF2</button> -->
+<div class="condiv mt-5">
+    <div id="disp" class="text-center"></div>
+    <div class="text-center">
+        <button class="pdfuntion btn btn-success" onclick="printpdf()">Get PDF</button>
+    </div>
+</div>
+    <!-- <button onclick="save()">Save Pdf</button> -->
+    <script>
+        var client = JSON.parse(localStorage.getItem("localclient"))
+        let ind = localStorage.getItem('index')
+        var tran = Math.round(Math.random()*1000000000000000000)
+        var tranf = "245395925838"
+        var sect= tranf + Math.round(Math.random()*1000000000000000000)
+        for (let index = 0; index < client[ind].eachistory.length; index++) {
+            disp.innerHTML = `
+            <div class="shadow">
+            <h3>Success</h1>
+                <hr>
+                <div>
+                    <div class="payment bg-success text-center">✔</div> 
+                    </div>
+                    <hr>
+                <p>Bank Name....................................................................Fastpay</p>
+            <p>Name........................................................................................<div="correctleft">${client[ind].eachistory[index].firsthistory1}</p>
+            <p>Amount...................................................................................${client[ind].eachistory[index].firsthistory2}</p>
+            <p>Date..........................................................................${client[ind].eachistory[index].firsthistory3}</p>
+            <p>Time................................................................................${client[ind].eachistory[index].firsthistory4}</p>
+            <hr>
+            <p>Transaction number......................${tran}</p>
+            <p>Session ID <br>${sect}</p>
+            </div>`         
+        }
+        console.log(client[ind].eachistory);
+        const printpdf = (ind) => {
+            addScript('https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js');
+
+            function addScript(url) {
+                var script = document.createElement('script');
+                script.type = 'application/javascript';
+                script.src = url;
+                document.head.appendChild(script);
+            }
+
+            var element = document.getElementById('disp');
+            html2pdf(element);
+            var worker = html2pdf();
+            var worker = html2pdf().from(element).save();
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+</body>
+
+</html>

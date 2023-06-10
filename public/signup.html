@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="./signup.css">
+    <title>Document</title>
+</head>
+
+<body style="background-color: rgb(0, 153, 255)">
+    <div class="">
+        <div class="container mt-5 p-3 bg-white">
+            <div class="row">
+                <div class="col-12 mx-auto shadow-lg">
+                    <div class="pic"></div>
+                    <div class="mt-3" style="margin: auto;width: 300px;">
+                        <span class="text-center">Welcome to </span>
+                        <span class="text-center" style="background-color: rgb(0, 153, 255); color: white; border-radius: 10px; font-size: 25px; padding: 10px;">Fastpay</span>
+                        <span class="text-center">Sign Up page</span>
+                    </div>
+                   
+                    <div class="detop">
+                        <!-- <div class="de"> -->
+                            <input type="text" id="fn" class="form-control my-2" placeholder="First Name">
+                            <input type="text" id="ln" class="form-control my-2" placeholder="Last Name">
+                            <input type="text" id="pn" class="form-control my-2" maxlength="11"
+                                placeholder="Phone Number">
+                            <input type="password" id="ps" class="form-control my-2" maxlength="9" placeholder="Password">
+                            <button class="btn btn-success my-2 form-control" onclick="signup()"><span id="load">SIGN
+                                    UP</span> </button>
+                        <!-- </div> -->
+                        <input type="checkbox">Already Have An Account With Fastpay<a href="signin.html">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var accNo = Math.round(Math.random() * 100000000)
+            var aTmFont = Math.round(Math.random() * 100000000000000000000)
+            var backfont = Math.round(Math.random()*1000)
+            // var time = new Date().toLocaleDateString()
+            // console.log(time);
+            localStorage.setItem('accountnum', accNo)
+            if (localStorage.accNo == accNo) {
+                alert("ode")
+                var newaccNo = Math.round(Math.random() * 100000000)
+                accNo = newaccNo
+            }
+            var client = []
+            if (localStorage.localclient) {
+                client = JSON.parse(localStorage.getItem("localclient"))
+            }
+            if (localStorage.newPassword) {
+                var newPassword = localStorage.newPassword
+            }
+
+            function signup() {
+                load.innerHTML = "loading>>>"
+                // if (load.innerHTML == )
+                setTimeout(() => {
+                    load.innerHTML = "Sign In"
+                }, 4000);
+                if (fn.value == "" || ln.value == "" || pn.value == "" || ps.value == "") {
+                    alert("Fill In Your Input Correctly")
+
+                }
+                else {
+                    var allclient = {
+                        Firstname: fn.value,
+                        Lastname: ln.value,
+                        Phonenumber: pn.value,
+                        Password: ps.value,
+                        accno: "15" + accNo,
+                        newPasword: newPassword,
+                        history:[],
+                        eachistory:[],
+                        getaTmFont : aTmFont,
+                        mybackfont : backfont,
+                        mypin: "",
+                        nin : "",
+                        bvn : "",
+                        home : "",
+                        kin : "",
+                        total: 00,
+                    }
+                    client.push(allclient)
+                    console.log(client);
+                    localStorage.setItem('realPs', ps.value)
+                    localStorage.setItem("localclient", JSON.stringify(client))
+                    console.log(client.Password)
+                    window.location.href = "signin.html"
+                }
+            }
+
+        </script>
+</body>
+
+</html>

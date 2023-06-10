@@ -1,0 +1,232 @@
+.cont{
+    height: 103px;
+    display:  grid;
+    margin: auto;
+    /* border: 1px solid; */
+    z-index: -5 !important;
+    /* background-color: rgb(0, 153, 255);
+    box-shadow: 2px 2px 5px 5px  rgb(0, 217, 255); */
+    user-select: none;
+     margin-top: -50px;
+}
+.inner{
+    /* border: 1px solid; */
+    user-select: none;
+}
+.aTm{
+    border: 2px solid;
+    height: 190px;
+    width: 430px;
+    margin: auto;
+    border-radius: 10px;
+}
+.aTm2{
+    border: 3px solid;
+    height: 190px;
+    width: 430px;
+    margin: auto;
+    border-radius: 10px;
+}
+.backatmdesign{
+    border: 1px solid;
+    height: 50px;
+    background-color: black;
+    margin-top: -10px !important;
+}
+.debitcardimg{
+    /* border: 1px solid; */
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 20px;
+    position: fixed;
+    width: 60px;
+    background-image: url(./debit.jpg);
+    background-position: center;
+    background-size: contain;
+}
+.backatmdesign2{
+    margin-top: 3px !important;
+    height: 20px;
+    text-align: end;
+    /* border: 1px solid; */
+}
+.backatmdesign3{
+    margin-top: 1px !important;
+    height: 48px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.putend{
+    text-align: end;
+    font-size: 13px;
+}
+.correctleft{
+    margin-left: 20px;
+}
+.vervend{
+    display: block;
+    text-align: end;
+}
+.atmnum2{
+    text-align: end;
+}
+.atmnum3{
+    /* margin-top: 90px !important; */
+    /* border:  1px solid; */
+    position: fixed;
+    margin-left: 20px;
+}
+.fastdiv{
+    border-radius: 60px;
+    height: 50px !important;
+    border: 2px solid;
+    /* box-shadow: 0px 1px 5px 5px rgb(0, 153, 255);; */
+    width: 54px;
+    font-size: 30px;
+}
+.fontcorr{
+    font-size: 12px;
+}
+.fastdiv2{
+    border-radius: 60px;
+    height: 35px !important;
+    border: 2px solid;
+    width: 40px;
+    font-size: 20px;
+}
+#outer{
+    height: 50px !important;
+    width: 55px !important;
+    text-align: center;
+    margin-top: 50px;
+    z-index: 1;
+    user-select: none;
+}
+
+.setting-div, .setting-div-2{
+    margin-top: 200px;
+    width: 320px !important;
+    height: 250px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.setting-div-2{
+    height: 290px !important;
+}
+.btnSetting-div{
+    width: 200px;
+    margin: auto;
+    margin-top: 250px;
+}
+.btnSetting-div button{
+    width: 200px;
+    margin-top: 20px !important;
+}
+
+.expand{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 150px;
+    height: 80px;
+}
+#inbox{
+    /* border: 1px solid; */
+    width: 320px;
+    height: 100px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: whitesmoke;
+    box-shadow: rgb(223, 217, 217) 0px 2px 5px 5px;
+}
+#balance{
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    /* border: 1px solid; */
+    width: 150px;
+    background-color: white;
+    box-shadow: rgb(223, 217, 217) 0px 2px 5px 5px;
+}
+.buttons{
+    background-image: linear-gradient(to left, rgb(238, 231, 231),rgb(189, 167, 167));
+    margin-top: 100px;
+    height: 500px;
+    padding: 30px;    
+}
+.bringdown{
+    margin-top: 100px !important;
+}
+
+:hover.shi{
+    background-color: rgb(0, 217, 255);
+    
+}
+.shi{
+    margin: auto !important;
+    width: 100px;
+    text-align: center;
+    background-color: rgb(0, 153, 255);
+    border-radius: 10px;
+    height: 10vh;
+}
+.moveon{
+    gap: 30px !important;
+    width: 500px !important;
+    display: grid;
+    grid-template-columns: repeat(3,1fr) !important;
+    text-align: center;
+}
+.wel{
+    font-size: 30px;
+    user-select: none;
+}
+.hidden-body{
+    user-select: none;
+    display: block !important;
+    /* z-index: 5 !important; */
+    /* background-color: aqua; */
+}
+.container{
+    /* border: 1px solid; */
+    width: 450px !important;
+    text-align: center;
+    background-color: whitesmoke;
+    box-shadow: rgb(231, 224, 224) 0px 2px 5px 5px;
+}
+#dispco{
+    font-size: 30px;
+}
+/* .inner .inne{
+    height: 200vh;
+    width: 100vh;
+    gap: 10px;
+} */
+/* .upper{
+    margin-top: -220px;
+} */
+.correct{
+    margin-left: auto;
+    margin-right: auto;
+    /* border: 1px solid; */
+    z-index: 5 !important;
+    width: 200px;
+    padding: 20px;
+    /* background-color: aliceblue; */
+    /* border-radius: 20px; */
+    /* background-color: yellowgreen;
+    box-shadow: 0px 2px 5px 5px rgb(161, 240, 3); */
+    animation-name: airt;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    margin-top: -400px;
+    
+}
+@keyframes airt{
+    100%{
+        margin-top: 200px;
+        /* margin-left: -160px; */
+    }
+}

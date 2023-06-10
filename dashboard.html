@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="./dashboard.css">
+    <link rel="stylesheet" href="./bootstrap-5.2.2-dist/css/bootstrap.css">
+    <script src="./bootstrap-5.2.2-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="./dashboardresponsive.css" media="(max-width:688px)">
+    <title>Document</title>
+</head>
+
+<body onload="allmoney()" id="body">
+    <section class="cont">
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Function Direction</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body hidden-body">
+                <div>
+                    <button class="btn btn-success mt-5" onclick="home()"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
+                            <path
+                                d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z" />
+                        </svg></button><br>
+                    <button class="btn btn-warning mt-5" onclick="setting()"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
+                        </svg></button><br>
+                    <button class="btn btn-dark mt-5" onclick="profile()"><i class="ri-profile-line"></i></button><br>
+                    <button class="btn btn-secondary mt-5" id="mydispout" onclick="myatmfuntion()"><i
+                            class="ri-profile-line"></i></button><br>
+                    <button class="btn btn-primary mt-5" onclick="history()"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
+                            <path
+                                d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z" />
+                            <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z" />
+                            <path
+                                d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z" />
+                        </svg></button><br>
+                    <button class="btn btn-secondary mt-5" id="uploadpic"><i
+                            class="ri-shield-user-line"></i></button><br>
+                    <button onclick="log()" class="btn btn-danger mt-5"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left"
+                            viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z" />
+                            <path fill-rule="evenodd"
+                                d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                        </svg></button>
+                </div>
+                <button class="mt-5 btn btn-warning" onclick="on()" id="theme"></button>
+            </div>
+            <div class="upper">
+            </div>
+
+        </div>
+        <button class="btn btn-success" type="button" id="outer" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Open</button>
+        <div class="inner" id="changeDashboard">
+            <div class="inner" id="changeDisp">
+                <table class="table table-striped-columns" id="disp"></table>
+
+            </div>
+    </section>
+    <script>
+        var client = JSON.parse(localStorage.getItem("localclient"))
+        let getName = localStorage.getItem('firstname')
+        let getNam = localStorage.getItem('lastname')
+        let getN = localStorage.getItem('phonenumber')
+        let getNa = localStorage.getItem('password')
+        let num = localStorage.getItem('acc')
+        let ind = localStorage.getItem('index')
+        // let ind = localStorage.getItem('index')
+        // function load() {
+        //     disp.innerHTML = `<b class="wel">Welcome,${getName}</p>`
+        // }
+        disp.innerHTML = `<b class="wel">Welcome,${getName}</p>`
+        function airtime() {
+            changeDashboard.innerHTML =
+                `<div class="container mt-5">
+            <div class="row">
+                <div class="shadow"></div>
+                <input type="text" class="form-control my-2" id="enterbalance" placeholder="Enter Amount">
+                <input type="text" class="form-control my-2" id="phonum" placeholder="Enter The Number">
+                <input type="text" class="form-control my-2" id="pinHolder" placeholder="Enter Pin">
+                <input type="text" class="form-control my-2" id="enternetwork" placeholder="Enter Network">
+                <button class="btn btn-success my-2" onclick="Airtelbtn()">Deposit</button>
+                </div>
+            </div>`
+        }
+
+        function Airtelbtn() {
+            if (enterbalance.value == "" || phonum.value == "" || pinHolder.value == "" || enternetwork == "") {
+                alert("Enter Amount")
+            }
+            else {
+                if (enterbalance.value > client[ind].total) {
+                    alert("insufficent")
+                }
+                else {
+                    if (pinHolder.value !== client[ind].mypin) {
+                        alert("Incorrect pin")
+                    }
+                    else {
+                        client[ind].total -= Number(enterbalance.value)
+                        localStorage.setItem('localclient', JSON.stringify(client))
+                        alert("Successful")
+                        // allmoney()
+                        // changeDashboard.innerHTML = ""
+                    }
+                }
+
+            }
+            enterbalance.value = ""
+            phonum.value = ""
+            pinHolder.value = ""
+            enternetwork.value = ""
+
+        }
+        mydispout.innerHTML = "front"
+        function myatmfuntion() {
+            if (mydispout.innerHTML == "front") {
+                changeDashboard.innerHTML = `<div id="chang" class="aTm mt-5 shadow">
+            <div class="fastdiv"><span>Fast</span>pay</div>
+            <div class="correctleft">
+                <div class="atmnum mt-1">${client[ind].getaTmFont}</div>
+                <div class="atmnum">${getName} ${getNam}</div>
+                </div>
+                
+            <div class="debitcardimg"></div>
+            <div class="atmnum2"><p>VALID THRU <br>08/25</p></div>
+            <div class="atmnum3">Fastpay Vitual Card</div>
+            <div class="vervend">Verve</div>
+            </div>
+            `
+                mydispout.innerHTML = "back"
+            }
+            else if (mydispout.innerHTML == "back") {
+                changeDashboard.innerHTML = `<div id="chang" class="aTm2 mt-5 shadow">
+                    <p class="putend">SCM-2315-0634</p>
+                <div class="backatmdesign"></div>
+                <div class="backatmdesign2">${client[ind].mybackfont}</div>
+                <div class="backatmdesign3"> 
+                  <p class="fontcorr">This card is issued by and remain the property of Fastpay Bank<br>
+                    This card may be used only by the named cardholder and in accordance with the Fastpaycard Terms and condition of use if found please return or contact Fastpay customer care
+                    </p>
+                </div>
+                
+                </div>`
+                mydispout.innerHTML = "front"
+
+            }
+        }
+
+        function PayFlight() {
+            changeDashboard.innerHTML = `
+           <div class="container mt-5">
+            <div class="row">
+                <div class="shadow"></div>
+                <input type="text" class="form-control my-2" id="enterbalance" placeholder="Enter Amount">
+                <input type="text" class="form-control my-2" id="phonum" placeholder="Country">
+                <input type="text" class="form-control my-2" id="pinHolder" placeholder="Enter Pin">
+                <button class="btn btn-success my-2" onclick="Clickonflight()">Cable TV</button>
+                </div>
+            </div>`
+        }
+
+        function Clickonflight() {
+            if (enterbalance.value == "" || phonum.value == "" || pinHolder.value == "") {
+                alert("Enter All Details Correctly")
+            }
+            else if (pinHolder.value !== client[ind].mypin) {
+                alert("Incorrect pin")
+            }
+            else if (client[ind].mypin == "") {
+                alert("Go and set your pin")
+            }
+            else if (enterbalance.value > client[ind].total) {
+                alert("Insufficent balance")
+            }
+            else {
+                client[ind].total -= Number(enterbalance.value)
+                localStorage.setItem('localclient', JSON.stringify(client))
+                alert("Successful")
+                // allmoney()
+            }
+            enterbalance.value = ""
+            phonum.value = ""
+            pinHolder.value = ""
+        }
+
+        function cableTV() {
+            changeDashboard.innerHTML = `
+           <div class="container mt-5">
+            <div class="row">
+                <div class="shadow"></div>
+                <input type="text" class="form-control my-2" id="enterbalance" placeholder="Enter Amount">
+                <input type="text" class="form-control my-2" id="phonum" placeholder="Enter The Cable Number">
+                <input type="text" class="form-control my-2" id="type" placeholder="Enter Cable Name">
+                <input type="text" class="form-control my-2" id="pinHolder" placeholder="Enter Pin">
+                <button class="btn btn-success my-2" onclick="Clickoncable()">Cable TV</button>
+                </div>
+            </div>`
+        }
+
+        function Clickoncable() {
+            if (enterbalance.value == "" || phonum.value == "" || type.value == "" || pinHolder.value == "") {
+                alert("Enter All Details Correctly")
+            }
+            else if (pinHolder.value !== client[ind].mypin) {
+                alert("Incorrect pin")
+            }
+            else if (client[ind].mypin == "") {
+                alert("Go and set your pin")
+            }
+            else if (enterbalance.value > client[ind].total) {
+                alert("Insufficent balance")
+            }
+            else {
+                client[ind].total -= Number(enterbalance.value)
+                localStorage.setItem('localclient', JSON.stringify(client))
+                alert("Successful")
+                // allmoney()
+            }
+            enterbalance.value = ""
+            phonum.value = ""
+            type.value = ""
+            pinHolder.value = ""
+        }
+
+
+        function school() {
+            changeDashboard.innerHTML = `
+           <div class="container mt-5">
+            <div class="row">
+                <div class="shadow"></div>
+                <input type="text" class="form-control my-2" id="enterbalance" placeholder="Enter Amount">
+                <input type="text" class="form-control my-2" id="phonum" placeholder="Enter The Exam Type">
+                <input type="text" class="form-control my-2" id="pinHolder" placeholder="Enter Pin">
+                <button class="btn btn-success my-2" onclick="Clickonschool()">Cable TV</button>
+                </div>
+            </div>`
+        }
+        function Clickonschool() {
+            if (enterbalance.value == "" || phonum.value == "" || pinHolder.value == "") {
+                alert("Enter All Details Correctly")
+            }
+            else if (pinHolder.value !== client[ind].mypin) {
+                alert("Incorrect pin")
+            }
+            else if (client[ind].mypin == "") {
+                alert("Go and set your pin")
+            }
+            else if (enterbalance.value > client[ind].total) {
+                alert("Insufficent balance")
+            }
+            else {
+                client[ind].total -= Number(enterbalance.value)
+                localStorage.setItem('localclient', JSON.stringify(client))
+                alert("Successful")
+                // allmoney()
+            }
+            enterbalance.value = ""
+            phonum.value = ""
+            pinHolder.value = ""
+        }
+
+        function shopping() {
+            changeDashboard.innerHTML = `
+           <div class="container mt-5">
+            <div class="row">
+                <div class="shadow"></div>
+                <input type="text" class="form-control my-2" id="enterbalance" placeholder="Enter Amount">
+                <input type="text" class="form-control my-2" id="phonum" placeholder="Product Type Or Name">
+                <input type="text" class="form-control my-2" id="type" placeholder="Location">
+                <input type="text" class="form-control my-2" id="pinHolder" placeholder="Enter Pin">
+                <button class="btn btn-success my-2" onclick="Clickonshopping()">Cable TV</button>
+                </div>
+            </div>`
+        }
+
+        function Clickonshopping() {
+            if (enterbalance.value == "" || phonum.value == "" || type.value == "" || pinHolder.value == "") {
+                alert("Enter All Details Correctly")
+            }
+            else if (pinHolder.value !== client[ind].mypin) {
+                alert("Incorrect pin")
+            }
+            else if (client[ind].mypin == "") {
+                alert("Go and set your pin")
+            }
+            else if (enterbalance.value > client[ind].total) {
+                alert("Insufficent balance")
+            }
+            else {
+                client[ind].total -= Number(enterbalance.value)
+                localStorage.setItem('localclient', JSON.stringify(client))
+                alert("Successful")
+                // allmoney()
+            }
+            enterbalance.value = ""
+            phonum.value = ""
+            type.value = ""
+            pinHolder.value = ""
+        }
+        function Electric() {
+            changeDashboard.innerHTML = `
+           <div class="container mt-5">
+            <div class="row">
+                <div class="shadow"></div>
+                <input type="text" class="form-control my-2" id="enterbalance" placeholder="Enter Amount">
+                <input type="text" class="form-control my-2" id="phonum" placeholder="Meter Name">
+                <input type="text" class="form-control my-2" id="pinHolder" placeholder="Enter Pin">
+                <button class="btn btn-success my-2" onclick="Clickonelectric()">Cable TV</button>
+                </div>
+            </div>`
+        }
+        function Clickonelectric() {
+            if (enterbalance.value == "" || phonum.value == "" || pinHolder.value == "") {
+                alert("Enter All Details Correctly")
+            }
+            else if (pinHolder.value !== client[ind].mypin) {
+                alert("Incorrect pin")
+            }
+            else if (client[ind].mypin == "") {
+                alert("Go and set your pin")
+            }
+            else if (enterbalance.value > client[ind].total) {
+                alert("Insufficent balance")
+            }
+            else {
+                client[ind].total -= Number(enterbalance.value)
+                localStorage.setItem('localclient', JSON.stringify(client))
+                alert("Suceessful")
+                // allmoney()
+            }
+            enterbalance.value = ""
+            phonum.value = ""
+            pinHolder.value = ""
+        }
+
+        function tAx() {
+            changeDashboard.innerHTML = `
+           <div class="container mt-5">
+            <div class="row">
+                <div class="shadow"></div>
+                <input type="text" class="form-control my-2" id="enterbalance" placeholder="Enter Amount Tax To pay">
+                <input type="text" class="form-control my-2" id="phonum" placeholder="Enter Tax Type">
+                <input type="text" class="form-control my-2" id="pinHolder" placeholder="Enter Pin">
+                <button class="btn btn-success my-2" onclick="Clickontax()">Tax</button>
+                </div>
+            </div>`
+        }
+
+        function Clickontax() {
+            if (enterbalance.value == "" || phonum.value == "" || pinHolder.value == "") {
+                alert("Enter All Details Correctly")
+            }
+            else if (pinHolder.value !== client[ind].mypin) {
+                alert("Incorrect pin")
+            }
+            else if (client[ind].mypin == "") {
+                alert("Go and set your pin")
+            }
+            else if (enterbalance.value > client[ind].total) {
+                alert("Insufficent balance")
+            }
+            else {
+                client[ind].total -= Number(enterbalance.value)
+                localStorage.setItem('localclient', JSON.stringify(client))
+                alert("Suceessful")
+                // allmoney()
+            }
+            enterbalance.value = ""
+            phonum.value = ""
+            pinHolder.value = ""
+        }
+
+        function dep() {
+            changeDashboard.innerHTML = `
+           <div class="container mt-5">
+            <div class="row">
+                <div class="shadow"></div>
+                <input type="text" class="form-control my-2" id="enter" placeholder="Enter Amount TO Deposit">
+                <input type="text" class="form-control my-2" id="pinHolder" placeholder="Enter Pin">
+                <button class="btn btn-success my-2" onclick="clickdep()">Deposit</button>
+                </div>
+            </div>`
+        }
+
+        function clickdep() {
+            if (client[ind].nin == "") {
+                if (enter.value > 50000) {
+                    changeDashboard.innerHTML = `<a href="picupload.html" class="bringdown" style="text-decoration: none;">click On To Upgrade Your Account</a>`
+                }
+                if (enter.value == "") {
+                    alert("Enter Amount")
+                }
+                else if (pinHolder.value == "") {
+                    alert("You Have omitted Your Pin")
+                }
+
+                else if (client[ind].mypin == "") {
+                    alert("Go and set your pin")
+                }
+                else if (pinHolder.value !== client[ind].mypin) {
+                    alert("Incorrect pin")
+                }
+                else {
+                    client[ind].total += Number(enter.value)
+                    localStorage.setItem('localclient', JSON.stringify(client))
+                    enter.value = ""
+                    pinHolder.value = ""
+                    alert("Successful")
+                }
+            }
+            // allmoney()
+        }
+        function tran() {
+            changeDashboard.innerHTML = `
+           <div class="container mt-5">
+            <div class="row">
+                <div class="shadow"></div>
+                <input type="text" class="form-control my-2" id="acctnum" placeholder="Enter The Reciever Account Number">
+                <input type="text" class="form-control my-2" id="amoUntpay" placeholder="Enter Amount">
+                <input type="text" class="form-control my-2" id="pinHolder" placeholder="Enter Pin">
+                <button class="btn btn-success my-2" onclick="ClickTranfering()">Transfer</button>
+                </div>
+                </div>`
+        }
+
+        function ClickTranfering() {
+            if (acctnum.value == "" || amoUntpay.value == "" || pinHolder.value == "") {
+                alert("Enter Your Input correctly")
+            }
+            else if (pinHolder.value !== client[ind].mypin) {
+                alert("Incorrect pin")
+            }
+            else if (acctnum.value == client[ind].accno) {
+                alert("You Are Not Allow To Make Transfer To Your Same Account Number")
+            }
+            else if (amoUntpay.value > client[ind].total) {
+                alert("Insufficent balance")
+            }
+            else if (client[ind].mypin == "") {
+                alert("Go and set your pin")
+            }
+            else {
+                var found = false
+                client.filter((user, i) => {
+                    var date = new Date().toLocaleDateString()
+                    var time = new Date().toLocaleTimeString()
+                    var status = "success"
+                    var amountpaying = amoUntpay.value
+                    // var myrealacc = acctnum.value
+                    if (user.accno == acctnum.value) {
+                        // console.log(user);
+                        user.total += Number(amoUntpay.value)
+                        client[ind].total -= Number(amoUntpay.value)
+                        found = true
+                        // changeDashboard.innerHTML = "<h1>Successful</h1>"
+                        let historyDetails = {
+                            reciever: user.Firstname,
+                            amount: amountpaying,
+                            mydate: date,
+                            mytime: time,
+                            mystatus: status
+                        }
+                        let receiverDetail = {
+                            recieverdet: user.Firstname,
+                            amount: amountpaying,
+                            mydate: date,
+                            mytime: time,
+                            mystatus: status
+                        }
+                        user.history.push(receiverDetail)
+                        client[ind].history.push(historyDetails)
+                        localStorage.setItem('localclient', JSON.stringify(client))
+                    }
+                })
+                if (found == true) {
+                    alert("Successful")
+                }
+                else {
+                    alert("Incorrect Account Number")
+                }
+            }
+            acctnum.value = ""
+            amoUntpay.value = ""
+            pinHolder.value = ""
+        }
+
+        function otherTra() {
+
+            changeDashboard.innerHTML = `
+           <div class="container mt-5">
+            <div class="row">
+                <div class="shadow"></div>
+                <input type="text" class="form-control my-2" id="accTno" placeholder="Enter The Reciever Account Number">
+                <input type="text" class="form-control my-2" id="amoUnting" placeholder="Enter Amount">
+                <input type="text" class="form-control my-2" id="amoUntname" placeholder="Enter Account Name">
+                <input type="text" class="form-control my-2" id="pinHolder" placeholder="Enter Pin">
+                <button class="btn btn-success my-2" onclick="ClickTran2()">Transfer</button>
+                </div>
+            </div>`
+        }
+
+        function ClickTran2() {
+            if (accTno.value == "" || amoUnting.value == "" || amoUntname.value == "" || pinHolder.value == "") {
+                alert("Enter Your Input")
+            }
+            else if (pinHolder.value !== client[ind].mypin) {
+                alert("Incorrect pin")
+            }
+            else if (accTno.value == client[ind].accno) {
+                alert("You Are Not Allow To Make Transfer To Your Same Account Number")
+            }
+            else if (amoUnting.value > client[ind].total) {
+                alert("Insufficent balance")
+            }
+            else if (client[ind].mypin == "") {
+                alert("Go and set your pin")
+            }
+            else {
+                var found = false
+                client.filter((user, i) => {
+                    var date = new Date().toLocaleDateString()
+                    var time = new Date().toLocaleTimeString()
+                    var status = "success"
+                    if (user.accno == accTno.value) {
+                        // console.log(user);
+                        user.total += Number(amoUnting.value)
+                        client[ind].total -= Number(amoUnting.value)
+                        found = true
+                        let historyDetails = {
+                            reciever: user.Firstname,
+                            amount: amoUnting.value,
+                            mydate: date,
+                            mytime: time,
+                            mystatus: status
+                        }
+                        let receiverDetail = {
+                            recieverdet: user.Firstname,
+                            amount: amoUnting.value,
+                            mydate: date,
+                            mytime: time,
+                            mystatus: status
+                        }
+                        user.history.push(receiverDetail)
+                        client[ind].history.push(historyDetails)
+                        localStorage.setItem('localclient', JSON.stringify(client))
+
+                    }
+
+                })
+                if (found == true) {
+                    alert("Successful")
+                }
+                else {
+                    alert("Incorrect Account Number")
+                }
+            }
+            // }
+            accTno.value = ""
+            amoUnting.value = ""
+            amoUntname.value = ""
+            pinHolder.value = ""
+            // allmoney()
+        }
+
+        home()
+        function home() {
+            // var acct = new Date()
+            // display.innerHTML = ``
+            // display.innerHTML = `
+            //     <div class="container">
+            //     <b class="wel">Welcome,${getName}</p> </div>`
+            // disp.innerHTML = `<div class="container"> <b class="fontacc"></h1>
+            //        </div>
+            //         `
+            changeDashboard.innerHTML = `
+            <b class="wel">Welcome,${getName}<br>
+                Acc No: ${num}
+                </b>
+              
+            <div id="inbox">
+                <div class="d-flex" style="width:230px !important; margin:auto" >
+                <h4 id="balance">${client[ind].total}</h2>
+                    <button onclick="hidebal()" class="btn btn-primary" id="hide" style="height:35px ; position:relative; top:27px; padding-top:-20px !important"><i class="ri-eye-off-fill"></i></button> 
+                    </div>  
+                    </div>
+                    <p class="fs-5 mt-4">Make Transaction</p>
+                    <div class="d-flex"> 
+                            <button onclick="tran()" class="expand btn btn-primary"><i class="ri-bank-fill"></i><br>Fastpay</button><br>
+                            <button onclick="dep()" class="expand btn btn-secondary"><i class="ri-wallet-3-fill"></i><br>Deposit</button>
+                            <button onclick="otherTra()"class="expand btn btn-danger"><i class="ri-money-cny-box-fill"></i> <br> Others</button>
+                    </div>
+                  
+                    <h4 class="mt-4">Service</h4>
+             <div class="col-md-6 col-sm-12 mx-auto fs-5 moveon">
+                <button onclick="airtime()" class="shi"><i class="ri-phone-fill"></i><br> Airtime</button>
+                <button onclick="cableTV()" class="shi"><i class="ri-tv-line"></i> <br> Cable TV</button>
+                <button onclick="PayFlight()" class="shi"><i class="ri-flight-takeoff-fill"></i><br> Flight</button>
+                <button class="shi" onclick="school()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mortarboard-fill" viewBox="0 0 16 16">
+                  <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
+                  <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z"/>
+                </svg> <br>Exam</button>
+                <button class="shi" onclick="Electric()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb-fill" viewBox="0 0 16 16">
+                  <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5z"/>
+                </svg><br> Electricity</button>
+                <button class="shi" onclick="shopping()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
+                 <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+               </svg><br> Shopping</button>
+                <button class="shi" onclick="tAx()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"/>
+                  <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"/>
+                  <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z"/>
+                  <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"/>
+                </svg> <br>Tax</button>
+                <button class="shi"><i class="ri-ticket-line"></i><br>Event</button>
+                <button class="shi"><i class="ri-taxi-fill"></i><br> Transport</button>
+            </div>
+            `
+
+        }
+        theme.innerHTML = `<i class="ri-moon-line"></i>`
+        function on() {
+            if (theme.innerHTML == `<i class="ri-moon-line"></i>`) {
+                body.style.backgroundColor = "black"
+                theme.innerHTML = `<i class="ri-moon-fill"></i>`
+                chang.style.backgroundColor = "white"
+            }
+            else if (theme.innerHTML == `<i class="ri-moon-fill"></i>`) {
+                body.style.backgroundColor = "white"
+                theme.innerHTML = `<i class="ri-moon-line"></i>`
+                // chang.style.backgroundColor = "white"
+            }
+        }
+        function allmoney() {
+            balance.innerHTML = `${client[ind].total} `
+        }
+        hide.innerHTML = `<i class="ri-eye-off-fill"></i>`
+        function hidebal() {
+            if (hide.innerHTML == `<i class="ri-eye-off-fill"></i>`) {
+                balance.innerHTML = `****`
+                hide.innerHTML = `<i class="ri-eye-fill"></i>`
+            }
+            else if (hide.innerHTML == `<i class="ri-eye-fill"></i>`) {
+                balance.innerHTML = `${client[ind].total}`
+                hide.innerHTML = `<i class="ri-eye-off-fill"></i>`
+            }
+        }
+        allmoney()
+
+
+
+        function setting() {
+            changeDashboard.innerHTML = `
+            <div class="btnSetting-div">
+            <button class="btn btn-warning mt-2" onclick="passwordBtn()">Change password</button><br>
+            <button class="btn btn-warning mt-2" onclick="pinBtn()">Set pin</button><br>
+            <button class="btn btn-warning mt-2" onclick="resetpinBtn()">Reset pin</button>
+            </div>    `
+        }
+        function passwordBtn() {
+            changeDashboard.innerHTML = `
+            <div class="mx-auto setting-div shadow">
+                <h2 class="text-center">Change Password</h2>
+                <input type="text" class="form-control my-2" placeholder="Old Password" id="old">
+               <input type="text"  class="form-control my-2" placeholder="New Password" id="newpass">
+               <button onclick="update()" class="btn btn-primary form-control my-2">Reset Password</button>
+               <button class="btn btn-warning" onclick="back()">Back</button>
+               </div>
+            `
+        }
+        function pinBtn() {
+            changeDashboard.innerHTML = `
+            <div class="mx-auto setting-div shadow">
+                <h2 class="text-center">Set Pin</h2>
+                <input type="number" class="form-control my-2" placeholder="New Pin" id="newpin">
+                <input type="number" class="form-control my-2" placeholder="Confirm Pin" id="confirmpin">
+               <button onclick="updatepin()" class="btn btn-primary form-control my-2">Set Pin</button>
+               <button class="btn btn-warning" onclick="back()">Back</button>    
+               </div>
+            `
+        }
+        function resetpinBtn() {
+            changeDashboard.innerHTML = `
+            <div class="mx-auto setting-div-2 shadow ">
+                <h2 class="text-center">Reset Pin</h2>
+                <input type="number" class="form-control my-2" placeholder="Old Pin" id="oldpin">
+                <input type="number" class="form-control my-2" placeholder="Reset Pin" id="resetpin">
+               <input type="number"  class="form-control my-2" placeholder="Confirm Reset Pin" id="confirmresetpin">
+               <button onclick="updatenewpin()" class="btn btn-primary form-control my-2">Set Pin</button>
+               <button class="btn btn-warning" onclick="back()">Back</button>
+               </div>
+            `
+        }
+
+        function back() {
+            changeDashboard.innerHTML = `<div class="btnSetting-div">
+            <button class="btn btn-warning mt-2" onclick="passwordBtn()">Change password</button><br>
+            <button class="btn btn-warning mt-2" onclick="pinBtn()">Set pin</button><br>
+            <button class="btn btn-warning mt-2" onclick="resetpinBtn()">Reset pin</button>
+            </div>    `
+        }
+        function updatenewpin() {
+            if (resetpin.value == "" || confirmresetpin.value == "") {
+                alert("Kindly input your pin")
+            }
+            else if (oldpin.value !== client[ind].mypin) {
+                alert("This pin is not correct")
+            }
+            else if (confirmresetpin.value !== resetpin.value) {
+                alert("This pin does not match ")
+            }
+            else {
+                client[ind].mypin = resetpin.value
+                localStorage.setItem('localclient', JSON.stringify(client))
+                alert("Pin updated")
+
+
+            }
+        }
+        function updatepin() {
+            // alert("s")
+            if (newpin.value == "" || confirmpin.value == "") {
+                alert("Kindly set your transaction pin")
+            }
+            else if (confirmpin.value !== newpin.value) {
+                alert("This not your previous pin")
+            }
+            else if (client[ind].mypin !== "") {
+                alert("Pin has been set before")
+            }
+            else {
+                client[ind].mypin = newpin.value
+                localStorage.setItem('localclient', JSON.stringify(client))
+                alert("Pin Set")
+            }
+            newpin.value = ""
+            confirmpin.value = ""
+
+        }
+        var confirm = false
+        function update() {
+            if (old.value == "" || newpass.value == "") {
+                alert("Make Sure The Pasword Is Set Correctly")
+                confirm == true
+            }
+            // localStorage.setItem('client', client[ind].Password)
+            if (old.value !== client[ind].Password) {
+                alert("incorrect password")
+            }
+            else {
+                client[ind].Password = newpass.value
+                localStorage.setItem('localclient', JSON.stringify(client))
+                alert("Password Set")
+            }
+            old.value = ""
+            newpass.value = ""
+        }
+        function profile() {
+
+            changeDashboard.innerHTML = `   
+                 <tbody>
+                 <tr>              
+                 <b> Welcome,${getName}</p>
+                 <div class="d-flex">   
+                 <input type="text" name="" id="" class="form-control" readonly value="FirstName: ${getName}">
+                 <input type="text" name="" id="" class="form-control" readonly value="LastName: ${getNam}">
+                 </div>
+                 <div class="d-flex">  
+                 <input type="text" name="" id="" class="form-control" readonly value="Phone Number: ${getN}">
+                 <input type="text" name="" id="" class="form-control" readonly value="Password: ${getNa}">
+                </div>
+                 </tr>
+                    </tbody>`
+
+        }
+        function log() {
+            window.location.href = "signin.html"
+        }
+
+        // console.log(document.getElementById('idpic'))
+        const imageuploadbtn = document.getElementById('uploadpic')
+
+
+        imageuploadbtn.addEventListener('click', () => {
+            changeDashboard.innerHTML = `
+            <div class="mtopic">
+            <p class="text-center fs-4">Update Profile</b>
+            <div class="dispic bg-white" id="idpic">
+                </div>
+            </div>
+            `
+            window.location.href = "picupload.html"
+
+        })
+        function history() {
+            changeDashboard.innerHTML = "<b>Histroy</b>"
+            // changeDashboard.innerHTML = `<h1 class="text-center">Sender History</h1>`
+            console.log(client[ind].history)
+            // changeDashboard.innerHTML = ""
+            client[ind].history.filter((user, ind) => {
+                // changeDashboard.innerHTML = ""
+                if (user.reciever) {
+                    changeDashboard.innerHTML += `
+                    <div class="card mx-auto mt-3 shadow" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Sender History</h5>
+                            <p class="card-text">
+                                <div class="fs-5">
+                                    <div class="historystyle">Name- ${user.reciever}</div>
+                                    <div class="historystyle">Amount- ${user.amount}</div>
+                                    <div class="historystyle">Date- ${user.mydate}</div>
+                                    <div class="historystyle">Time- ${user.mytime}</div>
+                                    <div class="historystyle">Status- ${user.mystatus}</div>
+                                    <p class="mt-5">${user.amount} Has Been Tranfered To ${user.reciever}</p>
+                                    <button onclick="pdflink(${ind})" class="btn btn-success">GET PDF</button>
+                                    </div>
+                                    </p>
+                        </div>
+                        </div>
+                    `
+                }
+            })
+            // changeDashboard.innerHTML = `<div class="fs-2 text-center mt-5">For Receiver</div>`
+            // changeDashboard.innerHTML = ""
+            client[ind].history.filter((user) => {
+                if (user.recieverdet) {
+                    changeDashboard.innerHTML += `
+                        <div class="card mx-auto mt-3 shadow" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Receiver History</h5>
+                                <p class="card-text">
+                                    <div class="fs-5">
+                           <div class="historystyle">Name- ${user.recieverdet}</div>
+                            <div class="historystyle">Amount- ${user.amount}</div>
+                            <div class="historystyle">Date- ${user.mydate}</div>
+                            <div class="historystyle">Time- ${user.mytime}</div>
+                        <div class="historystyle">Status- ${user.mystatus}</div>
+                        <p class="mt-4">You Receive ${user.amount} From ${user.recieverdet}</p>
+                        <button onclick="pdflink2(${ind})" class="btn btn-success">GET PDF</button>
+                        </div>
+                               </p>
+                            </div>
+                            </div>
+                        `
+                }
+                console.log(user.history);
+            })
+
+        }
+        client[ind].eachistory
+        const pdflink = (ind) => {
+            client[ind].history.filter((user, ind) => {
+                var eachh = {
+                    firsthistory1: user.reciever,
+                    firsthistory2: user.amount,
+                    firsthistory3: user.mydate,
+                    firsthistory4: user.mytime,
+                    firsthistory5: user.mystatus,
+                }
+                client[ind].eachistory.push(eachh)
+                localStorage.setItem('localclient', JSON.stringify(client))
+            })
+            // console.log(client[ind].eachistory);
+            window.location.href = "pdf.html"
+        }
+
+
+
+
+
+
+
+
+        client[ind].eachistory
+        const pdflink2 = (ind) => {
+            client[ind].history.filter((user, i) => {
+                var eachh2 = {
+                    firsthistory1: user.recieverdet,
+                    firsthistory2: user.amount,
+                    firsthistory3: user.mydate,
+                    firsthistory4: user.mytime,
+                    firsthistory5: user.mystatus,
+                }
+                client[ind].eachistory.push(eachh2)
+                localStorage.setItem('localclient', JSON.stringify(client))
+            })
+            // console.log(client[ind].eachistory);
+            window.location.href = "pdf.html"
+        }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- <input type="text" style="text-align: end;"> -->
+</body>
+
+</html>

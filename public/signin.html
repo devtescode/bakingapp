@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="./signin.css">
+    <title>Document</title>
+</head>
+
+<body style="background-color: rgb(0, 153, 255)">
+    <div class="container mt-5 p-5 bg-white">
+        <div class="row">
+            <div class="col-12 mx-auto shadow">
+                <div class="welcome"></div>
+                <div class="text-center"> 
+                    <span class="text-center">Welcome to Sign in</span>
+                    <span class="text-center" style="background-color: rgb(0, 153, 255); color: white; border-radius: 10px; font-size: 25px; padding: 10px;">Fastpay</span>
+                </div>
+                    <input type="text" id="phone" class="form-control my-2" placeholder="Phone Number">
+                    <input type="password" id="pass" class="form-control my-2" placeholder="Password">
+                    <button class="btn btn-success my-2 form-control" onclick="signin()">SIGN IN</button>
+                    <input type="checkbox" class="m-2">Don't Have An Account?<a href="signup.html">Sign Up</a>
+            </div>
+        </div>
+        <div class="fastpayin"></div>
+    </div>
+    <!-- <p>Don't Have An Account? Sign Up</p> -->
+    <!-- <div class="signinpage"> 
+            <p class="thanks">Remember What You Fill In Your Sign Up Page To Is Compatible With Your Sign In Page So As To Avoid Problem And To Lead To Your Dashboard Page <b>Thanks For Creating Fastpay</b></p>
+        </div> -->
+    <script>
+        let client = JSON.parse(localStorage.getItem("localclient"))
+        var found = false
+
+        function signin() {
+            if (phone.value == "" || pass.value == "") {
+                alert("Fill It Correctly")
+            }
+            else {
+                for (let index = 0; index < client.length; index++) {
+                    client.filter((user, i) => {
+                        if (localStorage.newPassword) {
+                            client[index].Password = localStorage.newPassword
+                            // console.log(user)
+                        }
+                    })
+                    if (phone.value == client[index].Phonenumber && pass.value == client[index].Password) {
+                        found = true
+
+                        console.log(index)
+                        localStorage.setItem('index', index)
+                        localStorage.setItem('firstname', client[index].Firstname)
+                        localStorage.setItem('lastname', client[index].Lastname)
+                        localStorage.setItem('phonenumber', client[index].Phonenumber)
+                        localStorage.setItem('password', client[index].Password)
+                        localStorage.setItem('acc', client[index].accno)
+                    }
+                }
+                if (found == true) {
+                    alert("Correct Information")
+                    window.location.href = "dashboard.html"
+                }
+                else {
+                    alert("Incorrect Data")
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

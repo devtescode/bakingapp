@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <h1>im the uplaod</h1> -->
+    <button class="btn btn-success" onclick="back()">Back</button>
+    <div class="mtopic">
+        <p class="text-center fs-4">Upload Profile</b>
+        <div class="dispic bg-white" id="idpic">
+        </div>
+    </div>
+    <div id="changeDashboard"></div>
+    <div class="container">
+        <div class="row shadow ">
+            <input type="text" id="nin" class="form-control my-3"  placeholder="Enter Your NIN" maxlength="11">
+            <input type="text" id="kin" class="form-control my-2"  placeholder="Next Of Kin">
+            <input type="text" id="bvn" class="form-control my-2"  placeholder="BVN">
+            <input type="text" id="home" class="form-control my-2" placeholder="Home Address">
+            <button class="btn btn-success my-3 mx-auto" onclick="upgrade()">Upgrade</button>
+        </div>
+    </div>
+    <style>
+        .mtopic {
+            margin-top: 100px;
+        }
+
+        .dispic {
+            border: 1px solid;
+            width: 150px;
+            height: 140px;
+            margin: auto;
+            border-radius: 300px !important;
+        }
+    </style>
+    <script>
+        var client = JSON.parse(localStorage.getItem("localclient"))
+        let ind = localStorage.getItem('index')
+        // let getName = localStorage.getItem('firstname')
+        // let getNam = localStorage.getItem('lastname')
+        // let getN = localStorage.getItem('phonenumber')
+        // let getNa = localStorage.getItem('password')
+        const imageuploadbtn = document.getElementById('idpic')
+        imageuploadbtn.addEventListener('click', () => {
+            const input = document.createElement('input')
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.addEventListener('change', (event) => {
+                const file = event.target.files[0]
+                const reader = new FileReader()
+                reader.addEventListener('load', () => {
+                    const imageUrl = reader.result;
+                    imageuploadbtn.style.background = `url(${imageUrl})`
+                    localStorage.setItem('uploadImage', imageUrl);
+                })
+                reader.readAsDataURL(file)
+            })
+            input.click()
+        })
+        const uploadImage = localStorage.getItem('uploadImage')
+        if (uploadImage) {
+            imageuploadbtn.style.backgroundImage = `url(${uploadImage})`
+            imageuploadbtn.style.backgroundSize = "cover"
+            imageuploadbtn.style.backgroundRepeat = "no-repeat"
+            imageuploadbtn.style.backgroundPosition = "center"
+        }        
+        function back(){
+            window.location.href = "dashboard.html"
+        }
+        const upgrade=()=>{
+            client[ind].nin  = nin.value
+            client[ind].kin  = kin.value
+            client[ind].bvn  = bvn.value
+            client[ind].home = home.value
+            localStorage.setItem("localclient",JSON.stringify(client))
+            alert("You Have Successful Upgrade")
+            nin.value = ""
+            kin.value = ""
+            bvn.value = ""
+            home.value = ""
+        }
+    </script>
+</body>
+
+</html>

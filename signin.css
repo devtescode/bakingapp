@@ -1,0 +1,39 @@
+/* body{
+    background-image: url(./man-with-laptop.331dfa07.png);
+} */
+/* .signinpage{
+    background-color: white;
+    height: 50vh;
+    font-size: 20px;
+    
+} */
+.text-center{
+    font-size: 30px;
+}
+.welcome{
+    background-image: url(./wel.png);
+    /* border: 1px solid; */
+    box-shadow: 2px 2px 5px 5px rgb(184, 179, 179);
+    border-radius: 20px;
+    width: 1px;
+    padding: 6vh !important;
+    margin-left: auto;
+    margin-right: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* .thanks{
+    height: 50vh;
+    background-image: url(./images\ \(2\).jpeg);
+    animation-name: thank;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    margin-top: 800px;
+}
+@keyframes thank{
+   100%{
+    margin-top: 70px;
+   }
+} */

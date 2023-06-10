@@ -1,0 +1,53 @@
+.card-title{
+    font-size: 45px;
+}
+.img-1{
+    width: 300px;
+}
+.general{
+    background-color: white;
+    margin: auto;
+    /* padding: 5px; */
+}
+.topDiv{
+    height: 50px;
+    padding-top: 10px;
+}
+.topDiv button{
+    height: 40px;
+    position: relative;
+    top: -5px;
+}
+.grid{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    height: 165px;
+    margin-top: 20px;
+}
+.firstDiv{
+    background-image: url(./fastp.png);
+    background-size: cover;
+}
+body{
+    background-color: rgb(0, 153, 255);
+    padding: 20px;
+}
+@media (max-width:600px) {
+    .card-title{
+        font-size: 25px;
+    }
+    .img-1{
+        width: 250px;
+    }
+    .topDiv{
+        height: 60px;
+    }
+    .firstDiv{
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    body{
+        background-color: white;
+    }
+}
